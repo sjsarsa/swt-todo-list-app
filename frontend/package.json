@@ -1,0 +1,34 @@
+{
+  "name": "todo-list-frontend",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/solid-js": "^4.4.2",
+    "@modular-forms/solid": "^0.20.0",
+    "@solid-primitives/storage": "^2.1.4",
+    "@thisbeyond/solid-select": "^0.15.0",
+    "astro": "^4.15.8",
+    "solid-js": "^1.8.22",
+    "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^5.1.1",
+    "@iconify-icon/solid": "^2.1.1",
+    "@tailwindcss/typography": "^0.5.15",
+    "astro-icon": "^1.1.1",
+    "daisyui": "^4.12.10",
+    "eslint": "^8.57.1",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "tailwindcss": "^3.4.12"
+  }
+}

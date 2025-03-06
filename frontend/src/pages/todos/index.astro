@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../layout/BaseLayout.astro'
+import TodoListView from '../../components/todoList/TodoListView'
+---
+
+<BaseLayout>
+  <TodoListView client:only="solid-js" />
+</BaseLayout>

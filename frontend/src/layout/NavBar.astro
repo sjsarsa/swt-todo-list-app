@@ -1,0 +1,41 @@
+---
+import StaticIcon from '../components/common/StaticIcon'
+import ProfileItems from '../components/navbar/ProfileItems'
+import TodoListItems from '../components/navbar/TodoListItems'
+---
+
+<nav
+  class="sticky border-b border-zinc-300 bg-slate-50/60 px-8 py-5 font-light text-zinc-600"
+>
+  <div class="flex flex-col items-center justify-between gap-2 md:flex-row">
+    <div class="flex flex-col md:flex-row items-center">
+      <div class="flex px-4 py-2 text-2xl">
+        <StaticIcon class="text-2xl self-center" icon="flat-color-icons:todo-list" />
+        <span class="ml-2 align-text-top text-2xl font-semibold">
+          Todo Manager
+        </span>
+      </div>
+      <div class="divider divider-horizontal before:bg-gray-500 after:bg-gray-500"/>
+      <TodoListItems client:only="solid-js" />
+    </div>
+    <ProfileItems client:only="solid-js" />
+  </div>
+</nav>
+
+<style>
+  nav {
+    padding: 0.75rem 1rem;
+  }
+
+  nav span.divider {
+    @apply mx-1.5 inline-block font-medium text-zinc-400;
+  }
+
+  nav a {
+    @apply underline decoration-transparent transition-all hover:text-zinc-950 hover:decoration-zinc-950;
+  }
+
+  nav a:last-of-type {
+    @apply font-medium text-zinc-700 hover:text-zinc-950;
+  }
+</style>

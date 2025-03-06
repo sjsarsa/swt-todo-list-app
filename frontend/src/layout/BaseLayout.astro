@@ -1,0 +1,31 @@
+---
+import NavBar from './NavBar.astro'
+import Footer from './Footer.astro'
+import { ViewTransitions } from 'astro:transitions'
+
+const isProd = import.meta.env.PROD
+---
+
+<html lang="en">
+  <head>
+    {isProd && <script>console.log = function () {};</script>}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      html,
+      body {
+        font-family: system-ui;
+        margin: 0;
+      }
+    </style>
+    <ViewTransitions />
+  </head>
+  <body class="relative flex h-screen flex-col">
+    <NavBar />
+    <main class="flex grow justify-center p-8">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

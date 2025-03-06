@@ -1,0 +1,29 @@
+---
+import FooterListItem from '../components/footer/FooterListItem'
+
+const footerLinks = [
+  { href: 'https://astro.build', title: 'Astro' },
+  { href: 'https://solidjs.com', title: 'SolidJS' },
+  { href: 'https://tailwindcss.com', title: 'TailwindCSS' },
+  { href: 'https://daisyui.com', title: 'DaisyUI' },
+  { href: 'https://iconify.design', title: 'Iconify' },
+]
+---
+
+<footer
+  class="z-10 mx-auto mt-12 flex w-screen justify-center border-t border-zinc-300 bg-slate-50/80 px-16 py-8 text-zinc-600"
+>
+  <div class="flex flex-col">
+    <span class="text-md font-semibold"> Made with ❤️ , 😓, 🥲 and</span>
+    <ul class="flex flex-col items-center justify-center space-x-2">
+      {
+        footerLinks.map((link) => (
+          <FooterListItem
+            href={link.href}
+            title={link.title}
+          />
+        ))
+      }
+    </ul>
+  </div>
+</footer>

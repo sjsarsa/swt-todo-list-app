@@ -1,0 +1,10 @@
+from datetime import datetime
+from sqlmodel import SQLModel, Field
+
+
+class TagCategory(SQLModel, table=True):
+    id: int = Field(default=None, primary_key=True)
+    author_id: int = Field(foreign_key="user.id")
+    name: str = Field(unique=True, nullable=False)
+    created: datetime = Field(default_factory=datetime.now)
+    updated: datetime = Field(default_factory=datetime.now)

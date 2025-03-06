@@ -1,0 +1,49 @@
+services:
+  frontend:
+    build: 
+      context: frontend/
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4321:4321"
+    volumes:
+      - ./frontend:/app
+      - "/app/node_modules/"
+    depends_on:
+      - backend
+  backend:
+    build: 
+      context: backend/
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4322:8000"
+    volumes:
+      - ./backend/:/app
+    env_file:
+      - database/.dev.env
+      - backend/.dev.env
+    depends_on:
+      - database
+  database:
+    image: "postgres:16.0"
+    restart: unless-stopped
+    env_file:
+      - database/.dev.env
+    # volumes: # uncomment these two lines to persist database container data after removing the container
+    #   - ./database/psql_data:/var/lib/postgresql/data 
+    ports:
+      - '5431:5432'
+    healthcheck:
+      test: pg_isready -q -h localhost -d $$POSTGRES_DB -U $$POSTGRES_USER
+      interval: 1s
+      timeout: 1s
+      retries: 15
+  database-migration:
+    build: database/migration/
+    env_file:
+      - database/.dev.env
+    depends_on:
+      database:
+        condition: service_healthy
+    volumes:
+      - ./database/migration/sql:/migration/sql
+    command: "migrate -e DATABASE_URL -p /migration/sql"
